@@ -19,6 +19,11 @@ public:
 
 
         while (hand.size() > 5) {
+            cout << "------------------------------------------------------------------------" << endl;
+
+            cout << "HUMAN'S TURN" << endl;
+                        cout << "------------------------------------------------------------------------" << endl;
+
             // Display the hand to the player
             cout << "Your hand:" << endl;
             for (int i = 0; i < hand.size(); i++) {
@@ -32,6 +37,10 @@ public:
             if (choice > 0 && choice <= hand.size()) {
                 Card* chosenCard = hand[choice - 1];
                 playCard(chosenCard);
+                cout << "------------------------------------------------------------------------" << endl;
+                cout << "Human's Health: " << health << endl;
+                cout << "Computer's Health: " << opponent->health << endl;
+                cout << "------------------------------------------------------------------------" << endl;
 
                 // Check if either player has lost
                 if (hasLost()) {
@@ -46,6 +55,10 @@ public:
             else {
                 cout << "Invalid choice! Try again.\n";
             }
+
+            // Initial setup output
+            //if (!isInitialSetupComplete) {
+
         }
 
         //isInitialSetupComplete = true;

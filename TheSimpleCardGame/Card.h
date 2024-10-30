@@ -2,15 +2,14 @@
 #include <string>
 using namespace std;
 
-#include "Player.h"
 
 class Player;
 
 class Card
 {
-private:
-	string cardName;
+	string cardName;  // Protected so derived classes can set it
 public:
+
 	virtual string getName() const = 0
 	{
 		return cardName;
@@ -20,5 +19,7 @@ public:
 	{
 
 	}
+
+
 };
 

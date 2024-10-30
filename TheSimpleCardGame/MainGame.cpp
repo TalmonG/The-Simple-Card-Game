@@ -33,48 +33,73 @@ int main() {
     human.opponent->name = "Computer";
     computer.opponent->name = "Human";
 
-    // 4. Create and fill decks
-    vector<Card*> humanDeck = {
-        new PainfulLesson(), new PainfulLesson(), new PainfulLesson(), new PainfulLesson(), new PainfulLesson(),
-        new Spite(), new Spite(), new Spite(), new Spite(), new Spite(), new Spite(),
-        new Peek(), new Peek(), new Peek(), new Peek(),
-        new Switcheroo(), new Switcheroo(),
-        new Refresh(), new Refresh(),
-        new FullHeal(),
-    };
+    vector<Card*> humanDeck = {};
+
+    for (int i = 0; i < 5; i++)
+    {
+        humanDeck.push_back(new PainfulLesson());
+    }
+    for (int i = 0; i < 6; i++)
+    {
+        humanDeck.push_back(new Spite()); // FINISHED
+    }
+    for (int i = 0; i < 4; i++)
+    {
+        humanDeck.push_back(new Peek());
+    }
+    for (int i = 0; i < 2; i++)
+    {
+        humanDeck.push_back(new Switcheroo());
+    }
+    for (int i = 0; i < 2; i++)
+    {
+        humanDeck.push_back(new Refresh()); // FINISHED
+    }
+    for (int i = 0; i < 1; i++)
+    {
+        humanDeck.push_back(new FullHeal()); // FINISHED
+    }
+    
+    //// 4. Create and fill decks
+    //vector<Card*> humanDeck = {
+    //    new PainfulLesson(), new PainfulLesson(), new PainfulLesson(), new PainfulLesson(), new PainfulLesson(),
+    //    new Spite(), new Spite(), new Spite(), new Spite(), new Spite(), new Spite(),
+    //    new Peek(), new Peek(), new Peek(), new Peek(),
+    //    new Switcheroo(), new Switcheroo(),
+    //    new Refresh(), new Refresh(),
+    //    new FullHeal(),
+    //};
 
     vector<Card*> computerDeck = humanDeck;  // Both players have identical decks
+    
 
     // 5. Shuffle decks
-    //shuffle(humanDeck.begin(), humanDeck.end(), rng);
-    //shuffle(computerDeck.begin(), computerDeck.end(), rng);
+    shuffle(humanDeck.begin(), humanDeck.end(), rng);
+    shuffle(computerDeck.begin(), computerDeck.end(), rng);
 
     // 6. Assign decks to players
     human.deck = humanDeck;
     computer.deck = computerDeck;
 
     // 7. Game loop
-    while (!human.hasLost() || !computer.hasLost()) {
-        // Human player's turn
-       // if (!human.isInitialSetupComplete)
-        {
-            cout << "Human's turn:\n";
+    bool isInitialSetupComplete = false;
+    while (!human.hasLost() && !computer.hasLost()) {
+        // Initial setup output
+        if (!isInitialSetupComplete) {
+            cout << "Starting game:\n";
             cout << "Human's Health: " << human.health << endl;
             cout << "Computer's Health: " << computer.health << endl;
+            isInitialSetupComplete = true;
         }
+
+        // Human player's turn
         human.myTurn();
         if (human.hasLost()) {
             cout << "Computer wins!\n";
-            cout << "Human's Health: " << human.health << endl;
-            cout << "Computer's Health: " << computer.health << endl;
             break;
         }
 
         // Computer player's turn
-       // if (!human.isInitialSetupComplete)
-        {
-            cout << "Computer's turn:\n";
-        }
         computer.myTurn();
         if (computer.hasLost()) {
             cout << "Human wins!\n";
@@ -84,4 +109,5 @@ int main() {
 
     // 8. Clean up dynamically allocated memory
     for (Card* card : humanDeck) delete card;
+    for (Card* card : computerDeck) delete card;
 }

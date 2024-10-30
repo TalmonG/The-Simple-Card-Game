@@ -1,5 +1,6 @@
 #pragma once
 #include "Card.h"
+#include "Player.h"
 class Spite : public Card
 {
 	string getName() const override
@@ -9,8 +10,8 @@ class Spite : public Card
 
 	void effect(Player* p) override
 	{
-		p->health -= 1;
-		p->opponent->health -= 1;
+		p->loseHealth(1);
+		p->opponent->loseHealth(1);
 	}
 };
 

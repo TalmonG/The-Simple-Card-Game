@@ -2,11 +2,12 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
-using namespace std;
-
 #include "Card.h"
 
-class Card;
+using namespace std;
+
+
+
 class Player
 {
 
@@ -35,7 +36,7 @@ public:
 	virtual void playCard(Card* c)
 	{
 		// Apply the card's effect
-		//c->effect(this);
+		c->effect(this);
 
 		// Move the card to the discard pile
 		discard_pile.push_back(c);

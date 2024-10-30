@@ -14,11 +14,20 @@ public:
 
         // Display card selection and play cards automatically until hand size is <= 5
         while (hand.size() > 5) {
+            cout << "------------------------------------------------------------------------" << endl;
+
+            cout << "COMPUTER'S TURN" << endl;
+
             int randomIndex = rand() % hand.size(); // Select a random card index
             Card* chosenCard = hand[randomIndex];
             cout << "Computer plays: " << chosenCard->getName() << endl;
 
             playCard(chosenCard);
+            cout << "------------------------------------------------------------------------" << endl;
+            cout << "Human's Health: " << health << endl;
+            cout << "Computer's Health: " << opponent->health << endl;
+            cout << "------------------------------------------------------------------------" << endl;
+
 
             // Check if the game is over
             if (hasLost()) {
@@ -29,6 +38,7 @@ public:
                 cout << "Computer player wins! Opponent has lost.\n";
                 return;
             }
+
         }
 
         //cout << "Computer's turn has ended with hand size: " << hand.size() << endl;

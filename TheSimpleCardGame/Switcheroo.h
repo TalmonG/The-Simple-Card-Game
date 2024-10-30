@@ -1,5 +1,6 @@
 #pragma once
 #include "Card.h"
+#include "Player.h"
 #include <algorithm>
 
 class Switcheroo : public Card
