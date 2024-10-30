@@ -6,6 +6,7 @@ class ComputerPlayer : public Player
 public:
 	void myTurn() override
 	{
+
         if (!drawCard()) {
             cout << "Computer player cannot draw a card. Deck is empty!\n";
             return;

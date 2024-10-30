@@ -10,7 +10,7 @@ class FullHeal : public Card
 
 	void effect(Player* p) override
 	{
-
+		p->health = 20;
 	}
 };
 

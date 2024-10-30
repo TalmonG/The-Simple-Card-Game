@@ -9,7 +9,8 @@ class Spite : public Card
 
 	void effect(Player* p) override
 	{
-
+		p->health -= 1;
+		p->opponent->health -= 1;
 	}
 };
 

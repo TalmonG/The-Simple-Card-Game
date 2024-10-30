@@ -1,5 +1,6 @@
 #pragma once
 #include "Card.h"
+#include <algorithm>
 
 class Switcheroo : public Card
 {
@@ -10,7 +11,7 @@ class Switcheroo : public Card
 
 	void effect(Player* p) override
 	{
-
+		swap(p->hand, p->opponent->hand);
 	}
 };
 

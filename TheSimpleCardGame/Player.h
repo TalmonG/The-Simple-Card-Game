@@ -1,25 +1,24 @@
 #pragma once
 #include <iostream>
 #include <vector>
+#include <algorithm>
+using namespace std;
 
 #include "Card.h"
 
 class Card;
-
 class Player
 {
 
 public:
 	Player* opponent;
+	string name = "default";
 	int health = 20;
 	vector<Card*> deck, hand, discard_pile;
-	bool isInitialSetupComplete = false;
+	//bool isInitialSetupComplete = false;
 
 
-	void loseHealth(int i)
-	{
-
-	}
+	void loseHealth(int i) { health -= i; }
 
 	bool drawCard()
 	{
@@ -33,8 +32,20 @@ public:
 		return true;
 	}
 
-	void playCard(Card* c)
+	virtual void playCard(Card* c)
 	{
+		// Apply the card's effect
+		//c->effect(this);
+
+		// Move the card to the discard pile
+		discard_pile.push_back(c);
+
+		// Remove the card from hand
+		auto it = std::find(hand.begin(), hand.end(), c);
+		if (it != hand.end()) {
+			hand.erase(it); // Remove card from hand
+		}
+
 
 	}
 
@@ -45,7 +56,7 @@ public:
 
 	bool hasLost()
 	{
-		if (hand.size() == 0)
+		if (health <= 0 || deck.empty() )
 		{
 			return true;
 		}

@@ -13,10 +13,10 @@ public:
         // Draw a card at the start of the turn
         if (!drawCard()) {
             cout << "Human player cannot draw a card. Deck is empty!\n";
+            hasLost();
             return;
         }
 
-        //cout << "Human player's turn begins.\n";
 
         while (hand.size() > 5) {
             // Display the hand to the player
@@ -26,13 +26,8 @@ public:
             }
 
             int choice;
-            cout << "Choose a card to play (1-" << hand.size() << ") or 0 to end turn: ";
+            cout << "Choose a card to play (1-" << hand.size() << "): ";
             cin >> choice;
-
-            if (choice == 0 && hand.size() <= 5) {
-                cout << "Ending turn.\n";
-                break;
-            }
 
             if (choice > 0 && choice <= hand.size()) {
                 Card* chosenCard = hand[choice - 1];
@@ -53,9 +48,8 @@ public:
             }
         }
 
-        isInitialSetupComplete = true;
+        //isInitialSetupComplete = true;
         
-        //cout << "Computer player's turn has ended with hand size: " << hand.size() << endl;
     }
 };
 

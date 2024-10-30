@@ -30,6 +30,8 @@ int main() {
     // 3. Assign opponents
     human.opponent = &computer;
     computer.opponent = &human;
+    human.opponent->name = "Computer";
+    computer.opponent->name = "Human";
 
     // 4. Create and fill decks
     vector<Card*> humanDeck = {
@@ -52,20 +54,24 @@ int main() {
     computer.deck = computerDeck;
 
     // 7. Game loop
-    while (true) {
+    while (!human.hasLost() || !computer.hasLost()) {
         // Human player's turn
-        if (!human.isInitialSetupComplete)
+       // if (!human.isInitialSetupComplete)
         {
             cout << "Human's turn:\n";
+            cout << "Human's Health: " << human.health << endl;
+            cout << "Computer's Health: " << computer.health << endl;
         }
         human.myTurn();
         if (human.hasLost()) {
             cout << "Computer wins!\n";
+            cout << "Human's Health: " << human.health << endl;
+            cout << "Computer's Health: " << computer.health << endl;
             break;
         }
 
         // Computer player's turn
-        if (!human.isInitialSetupComplete)
+       // if (!human.isInitialSetupComplete)
         {
             cout << "Computer's turn:\n";
         }
