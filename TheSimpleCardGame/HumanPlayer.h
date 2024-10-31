@@ -22,17 +22,47 @@ public:
             cout << "------------------------------------------------------------------------" << endl;
 
             cout << "HUMAN'S TURN" << endl;
-                        cout << "------------------------------------------------------------------------" << endl;
+            cout << "------------------------------------------------------------------------" << endl;
 
             // Display the hand to the player
             cout << "Your hand:" << endl;
             for (int i = 0; i < hand.size(); i++) {
                 cout << i + 1 << ". " << hand[i]->getName() << endl;
             }
-
             int choice;
-            cout << "Choose a card to play (1-" << hand.size() << "): ";
-            cin >> choice;
+
+            while (true)
+            {
+                if (hand.size() < 5)
+                {
+                    cout << "Choose a card to play (1-" << hand.size() << ") or enter 0 to skip: ";
+                    cin >> choice;
+
+                    if (choice == 0)
+                    {
+                        cout << "Skipping turn.\n";
+                        break; // Exit the loop if choice is 0
+                    }
+                    else
+                    {
+                        break; // Exit the loop if choice is valid
+                    }
+                }
+                else
+                {
+                    cout << "Choose a card to play (1-" << hand.size() << "): ";
+                    cin >> choice;
+
+                    if (choice == 0)
+                    {
+                        cout << "Invalid choice! Try again.\n";
+                    }
+                    else
+                    {
+                        break; // Exit the loop if choice is valid
+                    }
+                }
+            }
 
             if (choice > 0 && choice <= hand.size()) {
                 Card* chosenCard = hand[choice - 1];
