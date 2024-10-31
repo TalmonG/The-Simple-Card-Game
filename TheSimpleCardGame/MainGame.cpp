@@ -27,6 +27,9 @@ int main() {
     HumanPlayer human;
     ComputerPlayer computer;
 
+    bool humansTurn = true;
+    bool computersTurn = false;
+
     // 3. Assign opponents
     human.opponent = &computer;
     computer.opponent = &human;
@@ -92,15 +95,27 @@ int main() {
             isInitialSetupComplete = true;
         }
 
-        // Human player's turn
-        human.myTurn();
+        if (humansTurn == true)
+        {
+            human.myTurn();        // Human player's turn
+            humansTurn = false;
+            computersTurn = true;
+        }
+
+
         if (human.hasLost()) {
             cout << "Computer wins!\n";
             break;
         }
 
-        // Computer player's turn
-        computer.myTurn();
+        if (computersTurn == true)
+        {
+            computer.myTurn();        // Computer player's turn
+            humansTurn = true;
+            computersTurn = false;
+        }
+
+
         if (computer.hasLost()) {
             cout << "Human wins!\n";
             break;

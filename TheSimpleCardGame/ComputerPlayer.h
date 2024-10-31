@@ -24,8 +24,8 @@ public:
 
             playCard(chosenCard);
             cout << "------------------------------------------------------------------------" << endl;
-            cout << "Human's Health: " << health << endl;
-            cout << "Computer's Health: " << opponent->health << endl;
+            cout << opponent->name << "'s Health: " << opponent->health << endl;
+            cout << name << "'s Health: " << health << endl;
             cout << "------------------------------------------------------------------------" << endl;
 
 

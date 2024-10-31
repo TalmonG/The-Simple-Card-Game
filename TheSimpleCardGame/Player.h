@@ -19,7 +19,7 @@ public:
 	//bool isInitialSetupComplete = false;
 
 
-	void loseHealth(int i) { health -= i; }
+	void loseHealth(int i) { health += i; }
 
 	bool drawCard()
 	{
@@ -32,6 +32,8 @@ public:
 		deck.pop_back();            // Remove it from the deck
 		return true;
 	}
+
+
 
 	virtual void playCard(Card* c)
 	{

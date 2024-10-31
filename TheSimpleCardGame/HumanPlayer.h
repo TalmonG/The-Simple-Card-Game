@@ -68,8 +68,8 @@ public:
                 Card* chosenCard = hand[choice - 1];
                 playCard(chosenCard);
                 cout << "------------------------------------------------------------------------" << endl;
-                cout << "Human's Health: " << health << endl;
-                cout << "Computer's Health: " << opponent->health << endl;
+                cout << name << "'s Health: " << health << endl;
+                cout << opponent->name<< "'s Health: " << opponent->health << endl;
                 cout << "------------------------------------------------------------------------" << endl;
 
                 // Check if either player has lost

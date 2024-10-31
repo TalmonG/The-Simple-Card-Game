@@ -15,8 +15,8 @@ class Peek : public Card
 	{
 		cout << "------------------------------------------------------------------------" << endl;
 
-		cout << "Your top card: " << p->deck.back()->getName() << endl;
-		cout << "Opponent's top card: " << p->opponent->deck.back()->getName() << endl;
+		cout << p->name << "'s top card: " << p->deck.back()->getName() << endl;
+		cout << p->opponent->name << "'s top card: " << p->opponent->deck.back()->getName() << endl;
 		cout << "------------------------------------------------------------------------" << endl;
 
 	}

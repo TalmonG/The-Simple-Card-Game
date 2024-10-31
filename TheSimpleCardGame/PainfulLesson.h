@@ -16,9 +16,9 @@ public:
 	{
 		cout << "------------------------------------------------------------------------" << endl;
 
-		p->opponent->loseHealth(2);
+		p->opponent->loseHealth(-2);
 		
-		cout << "Opponent is forced to play a card\n";
+		cout << p->opponent->name << " is forced to play a card\n";
 		// Opponent draws card
 		if (!p->opponent->drawCard())
 		{

@@ -10,8 +10,8 @@ class Spite : public Card
 
 	void effect(Player* p) override
 	{
-		p->loseHealth(1);
-		p->opponent->loseHealth(1);
+		p->loseHealth(-1);
+		p->opponent->loseHealth(-1);
 	}
 };
 
